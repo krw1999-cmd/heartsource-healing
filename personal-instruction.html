@@ -83,16 +83,34 @@
             display: none;
             position: absolute;
             background-color: #ffffff;
-            min-width: 220px;
+            min-width: 280px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 1000;
             border-radius: 5px;
-            margin-top: 0.5rem;
+            margin-top: 0;
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+        }
+
+        /* Add invisible bridge to connect parent and dropdown */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: none;
+        }
+
+        .dropdown:hover::after {
+            display: block;
         }
 
         .dropdown-content a {
             color: var(--ink-charcoal);
-            padding: 0.8rem 1.2rem;
+            padding: 1rem 1.5rem;
             text-decoration: none;
             display: block;
             font-size: 1rem;
@@ -191,7 +209,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -506,6 +524,29 @@
 
             nav ul {
                 gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin-top: 0.5rem;
+                width: 100%;
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown > a::after {
+                content: ' ▾';
             }
 
             .hero h1 {
@@ -526,16 +567,6 @@
 
             .cross-nav h2 {
                 font-size: 2rem;
-            }
-
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                margin-top: 0;
-            }
-
-            .dropdown > a::after {
-                content: '';
             }
 
             .email-footer h2 {
@@ -678,6 +709,15 @@
                 }
             });
         });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelector('.dropdown > a').addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdown = this.parentElement;
+                dropdown.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
