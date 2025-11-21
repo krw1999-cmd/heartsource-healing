@@ -30,7 +30,7 @@
 
         /* Navigation */
         nav {
-            background-color: var(--dove-gray);
+            background-color: #ffffff;
             padding: 1.5rem 2rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.08);
             position: sticky;
@@ -144,29 +144,92 @@
             display: flex;
             align-items: center;
             padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
             gap: 3rem;
         }
 
-        /* Personal Instruction - Sage Mist */
+        .pillar > * {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pillar-image,
+        .pillar-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        /* Pillar backgrounds with soft tints and subtle patterns */
+        .pillar {
+            position: relative;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.03) 10px,
+                    rgba(255,255,255,0.03) 20px
+                );
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        /* Personal Instruction - Lavender Core at 10% */
         .pillar#personal-instruction {
-            background-color: var(--sage-mist);
+            background-color: rgba(195, 138, 227, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        /* Upkeep - Dove Gray */
+        .pillar#personal-instruction:hover {
+            background-color: rgba(195, 138, 227, 0.15);
+            box-shadow: 0 4px 16px rgba(195, 138, 227, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Upkeep - Sage Mist at 12-15% */
         .pillar#upkeep {
-            background-color: var(--dove-gray);
+            background-color: rgba(201, 216, 210, 0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        /* Education - Sage Mist */
+        .pillar#upkeep:hover {
+            background-color: rgba(201, 216, 210, 0.22);
+            box-shadow: 0 4px 16px rgba(201, 216, 210, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Education - Warm Dove Gray */
         .pillar#education {
-            background-color: var(--sage-mist);
+            background-color: rgba(232, 230, 234, 0.6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        /* Immersion - Dove Gray */
+        .pillar#education:hover {
+            background-color: rgba(232, 230, 234, 0.8);
+            box-shadow: 0 4px 16px rgba(232, 230, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Immersion - Soft Rose Quartz at 12-15% */
         .pillar#immersion {
-            background-color: var(--dove-gray);
+            background-color: rgba(243, 220, 232, 0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .pillar#immersion:hover {
+            background-color: rgba(243, 220, 232, 0.22);
+            box-shadow: 0 4px 16px rgba(243, 220, 232, 0.15);
+            transform: translateY(-2px);
         }
 
         .pillar-image {
@@ -178,9 +241,15 @@
             width: 100%;
             height: 350px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .pillar:hover .pillar-image img {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
         }
 
         .pillar-content {
@@ -193,6 +262,11 @@
             margin-bottom: 1rem;
             position: relative;
             padding-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .pillar:hover .pillar-content h3 {
+            color: var(--ink-charcoal);
         }
 
         .pillar-content h3::after {
@@ -200,15 +274,21 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
+            width: 0;
             height: 3px;
             background-color: var(--golden-ember);
+            transition: width 0.4s ease;
+        }
+
+        .pillar:hover .pillar-content h3::after {
+            width: 60px;
         }
 
         .pillar-content p {
             font-size: 1.1rem;
             color: var(--ink-charcoal);
             margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .btn {
@@ -375,7 +455,8 @@
     <!-- Navigation -->
     <nav>
         <a href="#home">
-            <img src="images/Logo.png" alt="Heart Source Logo" class="logo">        </a>
+            <img src="https://i.imgur.com/your-logo.png" alt="Heart Source Logo" class="logo">
+        </a>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#personal-instruction">Personal Instruction</a></li>
