@@ -166,7 +166,7 @@
             text-align: center;
             position: relative;
             z-index: 2;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
         }
 
         /* Soft Lavender Heart Aura - positioned behind text */
@@ -201,11 +201,11 @@
         /* Continuous Vertical Line - Extended from text to bottom */
         .continue-line {
             position: absolute;
-            bottom: 0;
+            top: 280px;
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
-            height: calc(100% - 200px);
+            height: calc(100% - 280px);
             background: linear-gradient(to bottom, transparent 0%, var(--lavender-core) 30%, var(--golden-ember) 100%);
             z-index: 3;
             animation: pulse 2s ease-in-out infinite;
@@ -360,6 +360,25 @@
             line-height: 1.8;
         }
 
+        .cta-button {
+            display: inline-block;
+            background-color: var(--lavender-core);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(195, 138, 227, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #B176D8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(195, 138, 227, 0.4);
+        }
+
         /* Services Section */
         .services-section {
             background: linear-gradient(to bottom, #F0D7C5 0%, #E5BFA3 100%);
@@ -436,6 +455,12 @@
             font-size: 2.5rem;
             color: var(--ink-charcoal);
             margin-bottom: 1rem;
+        }
+        
+        .testimonials-intro p {
+            font-size: 1.1rem;
+            color: var(--charcoal-light);
+            margin-bottom: 2rem;
         }
 
         .testimonials-grid {
@@ -516,7 +541,7 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             nav {
                 padding: 1rem;
             }
@@ -555,6 +580,9 @@
                 padding: 1rem 1.5rem;
                 border-bottom: 1px solid #f0f0f0;
             }
+        }
+
+        @media (max-width: 768px) {
 
             .hero {
                 min-height: 75vh;
@@ -581,7 +609,8 @@
             }
 
             .continue-line {
-                height: calc(100% - 280px);
+                top: 320px;
+                height: calc(100% - 320px);
             }
 
             .pillars-grid {
@@ -739,6 +768,9 @@
                 <p class="testimonial-author">— Michael R.</p>
             </div>
         </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="testimonials.html" class="cta-button">View All Testimonials</a>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -784,7 +816,7 @@
 
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1200) {
                 const isClickInsideNav = navMenu.contains(event.target);
                 const isClickOnHamburger = hamburger.contains(event.target);
                 
@@ -795,7 +827,7 @@
         });
 
         // Dropdown toggle for mobile
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1200) {
             document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
                 dropdownLink.addEventListener('click', function(e) {
                     e.preventDefault();
