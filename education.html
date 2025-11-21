@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Heart Source Healing</title>
+    <style>
+        :root {
+            --lavender-core: #C38AE3;
+            --ink-charcoal: #2B2E38;
+            --dove-gray: #E8E6EA;
+            --rose-quartz: #F3DCE8;
+            --sage-mist: #C9D8D2;
+            --golden-ember: #D7B36A;
+            --clear-sky: #9CC9FF;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--ink-charcoal);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 50px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--ink-charcoal);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--lavender-core);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 280px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            border-radius: 5px;
+            margin-top: 0;
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+        }
+
+        /* Add invisible bridge to connect parent and dropdown */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: none;
+        }
+
+        .dropdown:hover::after {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--ink-charcoal);
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(195, 138, 227, 0.1);
+            color: var(--lavender-core);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(243, 220, 232, 0.15) 0%, rgba(232, 230, 234, 0.3) 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--lavender-core);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--golden-ember);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--ink-charcoal);
+            max-width: 800px;
+            margin: 2rem auto 0;
+            line-height: 1.8;
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 4rem 2rem;
+            background-color: rgba(243, 220, 232, 0.08);
+            width: 100%;
+        }
+
+        .overview-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .overview h2 {
+            font-size: 2.2rem;
+            color: var(--ink-charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview p {
+            font-size: 1.2rem;
+            color: var(--ink-charcoal);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 4rem 2rem;
+            background-color: #fff;
+            width: 100%;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--lavender-core);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(232, 230, 234, 0.3);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.03) 10px,
+                    rgba(255,255,255,0.03) 20px
+                );
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        .service-card:nth-child(1) {
+            background: rgba(243, 220, 232, 0.12);
+        }
+
+        .service-card:nth-child(2) {
+            background: rgba(195, 138, 227, 0.08);
+        }
+
+        .service-card:nth-child(3) {
+            background: rgba(201, 216, 210, 0.12);
+        }
+
+        .service-card:nth-child(4) {
+            background: rgba(156, 201, 255, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card:nth-child(1):hover {
+            background: rgba(243, 220, 232, 0.2);
+        }
+
+        .service-card:nth-child(2):hover {
+            background: rgba(195, 138, 227, 0.15);
+        }
+
+        .service-card:nth-child(3):hover {
+            background: rgba(201, 216, 210, 0.2);
+        }
+
+        .service-card:nth-child(4):hover {
+            background: rgba(156, 201, 255, 0.15);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--lavender-core);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--golden-ember);
+            transition: width 0.4s ease;
+        }
+
+        .service-card:hover h3::after {
+            width: 60px;
+        }
+
+        .service-card p {
+            font-size: 1.05rem;
+            color: var(--ink-charcoal);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--lavender-core);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--golden-ember);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .btn:hover {
+            background-color: var(--ink-charcoal);
+            transform: translateY(-2px);
+        }
+
+        .btn:hover::after {
+            width: 80%;
+        }
+
+        /* Cross-Navigation Section */
+        .cross-nav {
+            background-color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 4px solid var(--golden-ember);
+            width: 100%;
+        }
+
+        .cross-nav h2 {
+            font-size: 2.5rem;
+            color: var(--lavender-core);
+            margin-bottom: 1rem;
+        }
+
+        .cross-nav-subtitle {
+            font-size: 1.2rem;
+            color: var(--ink-charcoal);
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cross-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cross-nav-item {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cross-nav-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cross-nav-item h3 {
+            font-size: 1.8rem;
+            color: var(--lavender-core);
+            margin-bottom: 1.5rem;
+        }
+
+        .cross-nav-image {
+            width: 100%;
+            max-width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .cross-nav-item:hover .cross-nav-image {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .cross-nav-btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background-color: var(--lavender-core);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .cross-nav-btn:hover {
+            background-color: var(--ink-charcoal);
+            transform: scale(1.05);
+        }
+
+        /* Email Signup Footer */
+        .email-footer {
+            background: linear-gradient(135deg, var(--lavender-core) 0%, var(--rose-quartz) 50%, var(--sage-mist) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .email-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .email-footer-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .email-footer h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+            line-height: 1.4;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: var(--ink-charcoal);
+            transition: border-color 0.3s;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--clear-sky);
+        }
+
+        .email-input::placeholder {
+            color: #999;
+        }
+
+        .subscribe-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--golden-ember);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .subscribe-btn:hover {
+            background-color: var(--lavender-core);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin-top: 0.5rem;
+                width: 100%;
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown > a::after {
+                content: ' ▾';
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cross-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cross-nav h2 {
+                font-size: 2rem;
+            }
+
+            .email-footer h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">
+            <img src="images/Logo.png" alt="Heart Source Logo" class="logo">
+        </a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="personal-instruction.html">Personal Instruction</a>
+                <div class="dropdown-content">
+                    <a href="personal-instruction.html">Overview</a>
+                    <a href="individual-life-coaching.html">Individual Life Coaching</a>
+                    <a href="couples-life-coaching.html">Couples Life Coaching</a>
+                    <a href="pain-free-yoga.html">Private Pain-Free Yoga</a>
+                    <a href="health-coaching.html">One-on-One Health Coaching</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="upkeep.html">Upkeep</a>
+                <div class="dropdown-content">
+                    <a href="upkeep.html">Overview</a>
+                    <a href="weekly-yoga-classes.html">Weekly Pain-Free Yoga Classes</a>
+                    <a href="mens-coaching.html">3 Month Men's Coaching</a>
+                    <a href="group-nutrition-coaching.html">3 Month Group Nutrition & Health Coaching</a>
+                    <a href="community-coaching.html">3 Month Community Coaching</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="education.html">Education</a>
+                <div class="dropdown-content">
+                    <a href="education.html">Overview</a>
+                    <a href="health-counseling-training.html">Health Counseling Training Program</a>
+                    <a href="yoga-teacher-training.html">Pain-Free Yoga Teacher Training</a>
+                    <a href="somatic-trauma-training.html">Somatic Trauma Teacher Training</a>
+                    <a href="additional-training.html">Additional Training Programs</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="immersion.html">Immersion</a>
+                <div class="dropdown-content">
+                    <a href="immersion.html">Overview</a>
+                    <a href="workshops.html">Workshops</a>
+                    <a href="retreats.html">Retreats</a>
+                </div>
+            </li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Education</h1>
+        <p>Empower yourself and others through comprehensive training and transformative learning experiences.</p>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="overview-content">
+            <h2>Become a Guide for Others</h2>
+            <p>Education is where passion becomes practice. Whether you're seeking to deepen your own understanding or aspiring to teach and guide others, our training programs provide comprehensive, hands-on learning rooted in authenticity and compassion.</p>
+            <p>These immersive programs equip you with the knowledge, skills, and confidence to share healing modalities with integrity. This is where you transform your calling into meaningful work that serves your community and honors your own growth journey.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Choose Your Path</h2>
+        <div class="services-grid">
+            <!-- Health Counseling Training Program -->
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/F3DCE8/2B2E38?text=Health+Counseling" alt="Health Counseling Training" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <h3>Health Counseling Training Program</h3>
+                <p>Become a certified health counselor through our comprehensive training program. Learn integrative nutrition, lifestyle coaching, and holistic wellness practices to guide others toward sustainable health transformations with confidence and expertise.</p>
+                <a href="health-counseling-training.html" class="btn">Learn More</a>
+            </div>
+
+            <!-- Pain-Free Yoga Teacher Training -->
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/C38AE3/ffffff?text=Yoga+Teacher+Training" alt="Yoga Teacher Training" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <h3>Pain-Free Yoga Teacher Training</h3>
+                <p>Train to teach adaptive, therapeutic yoga that serves bodies of all abilities. This specialized certification focuses on pain relief, mobility, and creating inclusive spaces where every student feels welcomed, supported, and empowered to heal.</p>
+                <a href="yoga-teacher-training.html" class="btn">Learn More</a>
+            </div>
+
+            <!-- Somatic Trauma Teacher Training -->
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/C9D8D2/2B2E38?text=Somatic+Trauma+Training" alt="Somatic Trauma Training" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <h3>Somatic Trauma Teacher Training</h3>
+                <p>Learn to guide others through trauma healing using somatic approaches that honor the body's wisdom. This deep, transformative training prepares you to hold safe space for processing trauma through embodied practices and nervous system regulation.</p>
+                <a href="somatic-trauma-training.html" class="btn">Learn More</a>
+            </div>
+
+            <!-- Additional Training -->
+            <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/9CC9FF/2B2E38?text=Additional+Training" alt="Additional Training" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <h3>Additional Training Programs</h3>
+                <p>Explore specialized workshops and continuing education opportunities designed to expand your skills and deepen your practice. These programs offer advanced techniques, new modalities, and ongoing professional development for healing practitioners.</p>
+                <a href="additional-training.html" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-Navigation to Other Pillars -->
+    <section class="cross-nav">
+        <h2>Heart Source Offers 4 Pillars of Healing</h2>
+        <p class="cross-nav-subtitle">Our inclusive approach and gentle environment can accommodate everyone who wishes to participate.</p>
+        
+        <div class="cross-nav-grid">
+            <!-- Personal Instruction -->
+            <a href="personal-instruction.html" class="cross-nav-item">
+                <h3>Personal Instruction</h3>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop" alt="Personal Instruction" class="cross-nav-image">
+                <span class="cross-nav-btn">Learn More</span>
+            </a>
+
+            <!-- Upkeep -->
+            <a href="upkeep.html" class="cross-nav-item">
+                <h3>Upkeep</h3>
+                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop" alt="Upkeep" class="cross-nav-image">
+                <span class="cross-nav-btn">Learn More</span>
+            </a>
+
+            <!-- Education -->
+            <a href="education.html" class="cross-nav-item">
+                <h3>Education</h3>
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop" alt="Education" class="cross-nav-image">
+                <span class="cross-nav-btn">Learn More</span>
+            </a>
+
+            <!-- Immersion -->
+            <a href="immersion.html" class="cross-nav-item">
+                <h3>Immersion</h3>
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop" alt="Immersion" class="cross-nav-image">
+                <span class="cross-nav-btn">Learn More</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Email Signup Footer -->
+    <footer class="email-footer">
+        <div class="email-footer-content">
+            <h2>Join our email list to receive updates & upcoming workshop announcements.</h2>
+            <div class="email-form">
+                <input type="email" class="email-input" placeholder="Email Address" required>
+                <button type="submit" class="subscribe-btn">Subscribe!</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    dropdown.classList.toggle('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
