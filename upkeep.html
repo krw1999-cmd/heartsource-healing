@@ -593,7 +593,16 @@
                     <a href="health-coaching.html">One-on-One Health Coaching</a>
                 </div>
             </li>
-            <li><a href="upkeep.html">Upkeep</a></li>
+            <li class="dropdown">
+                <a href="upkeep.html">Upkeep</a>
+                <div class="dropdown-content">
+                    <a href="upkeep.html">Overview</a>
+                    <a href="weekly-yoga-classes.html">Weekly Pain-Free Yoga Classes</a>
+                    <a href="mens-coaching.html">3 Month Men's Coaching</a>
+                    <a href="group-nutrition-coaching.html">3 Month Group Nutrition & Health Coaching</a>
+                    <a href="community-coaching.html">3 Month Community Coaching</a>
+                </div>
+            </li>
             <li><a href="education.html">Education</a></li>
             <li><a href="immersion.html">Immersion</a></li>
         </ul>
@@ -618,15 +627,17 @@
     <section class="services">
         <h2>Choose Your Path</h2>
         <div class="services-grid">
-            <!-- Pain-Free Weekly Yoga Classes -->
+            <!-- Weekly Pain-Free Yoga Classes -->
             <div class="service-card">
-                <h3>Pain-Free Weekly Yoga Classes</h3>
+                <img src="https://via.placeholder.com/400x250/C9D8D2/2B2E38?text=Weekly+Yoga" alt="Weekly Yoga Classes" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <h3>Weekly Pain-Free Yoga Classes</h3>
                 <p>Join our welcoming community for gentle, adaptive yoga classes that honor your body's needs. Designed to relieve pain and build strength gradually, these weekly sessions provide consistent support for your physical wellness journey in a warm, judgment-free environment.</p>
                 <a href="weekly-yoga-classes.html" class="btn">Learn More</a>
             </div>
 
             <!-- 3 Month Men's Coaching -->
             <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/C38AE3/ffffff?text=Mens+Coaching" alt="Men's Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                 <h3>3 Month Men's Coaching</h3>
                 <p>A powerful group experience designed specifically for men seeking authentic connection and personal growth. Over three months, explore masculinity, vulnerability, and purpose in a supportive brotherhood that encourages honest conversation and meaningful transformation.</p>
                 <a href="mens-coaching.html" class="btn">Learn More</a>
@@ -634,6 +645,7 @@
 
             <!-- 3 Month Group Nutrition & Health Coaching -->
             <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/F3DCE8/2B2E38?text=Nutrition+Coaching" alt="Nutrition Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                 <h3>3 Month Group Nutrition & Health Coaching</h3>
                 <p>Transform your relationship with food and wellness alongside a supportive community. This comprehensive program combines nutrition education, lifestyle coaching, and group accountability to help you build sustainable healthy habits that last far beyond the three months.</p>
                 <a href="group-nutrition-coaching.html" class="btn">Learn More</a>
@@ -641,6 +653,7 @@
 
             <!-- 3 Month Community Coaching -->
             <div class="service-card">
+                <img src="https://via.placeholder.com/400x250/9CC9FF/2B2E38?text=Community+Coaching" alt="Community Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                 <h3>3 Month Community Coaching</h3>
                 <p>Experience the power of collective healing in this inclusive group coaching program. Share your journey, learn from others, and receive guided support as you work toward your personal goals within a compassionate, diverse community committed to growth and mutual encouragement.</p>
                 <a href="community-coaching.html" class="btn">Learn More</a>
@@ -712,10 +725,12 @@
 
         // Mobile dropdown toggle
         if (window.innerWidth <= 768) {
-            document.querySelector('.dropdown > a').addEventListener('click', function(e) {
-                e.preventDefault();
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('active');
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    dropdown.classList.toggle('active');
+                });
             });
         }
     </script>
