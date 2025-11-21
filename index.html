@@ -1,6 +1,4 @@
-.intro-text {
-            flex: 1;
-        }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -74,6 +72,65 @@
             color: var(--lavender-core);
         }
 
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 280px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            border-radius: 5px;
+            margin-top: 0;
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+        }
+
+        /* Add invisible bridge to connect parent and dropdown */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            display: none;
+        }
+
+        .dropdown:hover::after {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--ink-charcoal);
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(195, 138, 227, 0.1);
+            color: var(--lavender-core);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+        }
+
         /* Intro Section */
         .intro {
             display: flex;
@@ -81,12 +138,6 @@
             padding: 4rem 2rem;
             gap: 3rem;
             background-color: var(--dove-gray);
-        }
-
-        .intro-image,
-        .intro-text {
-            flex: 1;
-            max-width: 600px;
         }
 
         .intro-image {
@@ -151,21 +202,6 @@
             align-items: center;
             padding: 4rem 2rem;
             gap: 3rem;
-        }
-
-        .pillar > * {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pillar-image,
-        .pillar-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        /* Pillar backgrounds with soft tints and subtle patterns */
-        .pillar {
             position: relative;
             border-radius: 12px;
             transition: all 0.4s ease;
@@ -451,6 +487,16 @@
                 font-size: 1.5rem;
             }
 
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+            }
+
+            .dropdown > a::after {
+                content: '';
+            }
+
             .email-footer h2 {
                 font-size: 1.5rem;
             }
@@ -460,12 +506,21 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <a href="#home">
-            <img src="https://i.imgur.com/your-logo.png" alt="Heart Source Logo" class="logo">
+        <a href="index.html">
+            <img src="images/Heart Source Logo.png" alt="Heart Source Logo" class="logo">
         </a>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="personal-instruction.html">Personal Instruction</a></li>
+            <li class="dropdown">
+                <a href="personal-instruction.html">Personal Instruction</a>
+                <div class="dropdown-content">
+                    <a href="personal-instruction.html">Overview</a>
+                    <a href="individual-life-coaching.html">Individual Life Coaching</a>
+                    <a href="couples-life-coaching.html">Couples Life Coaching</a>
+                    <a href="pain-free-yoga.html">Private Pain-Free Yoga</a>
+                    <a href="health-coaching.html">One-on-One Health Coaching</a>
+                </div>
+            </li>
             <li><a href="upkeep.html">Upkeep</a></li>
             <li><a href="education.html">Education</a></li>
             <li><a href="immersion.html">Immersion</a></li>
