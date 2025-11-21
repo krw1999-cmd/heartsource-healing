@@ -151,13 +151,13 @@
 
         /* Hero Section - Warm Heart Space */
         .hero {
-            background: linear-gradient(to bottom, #ffffff 0%, #ffffff 40%, var(--lavender-mist) 100%);
-            min-height: 75vh;
+            background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, var(--lavender-mist) 100%);
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 6rem 2rem 5rem;
+            padding: 8rem 2rem 5rem;
             position: relative;
         }
 
@@ -201,12 +201,12 @@
         /* Continuous Vertical Line - Extended from text to bottom */
         .continue-line {
             position: absolute;
-            top: 280px;
+            top: 320px;
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
-            height: calc(100% - 280px);
-            background: linear-gradient(to bottom, transparent 0%, var(--lavender-core) 30%, var(--golden-ember) 100%);
+            height: calc(100% - 320px);
+            background: linear-gradient(to bottom, transparent 0%, var(--lavender-core) 20%, var(--golden-ember) 100%);
             z-index: 3;
             animation: pulse 2s ease-in-out infinite;
         }
@@ -585,8 +585,8 @@
         @media (max-width: 768px) {
 
             .hero {
-                min-height: 75vh;
-                padding: 4rem 2rem 2rem;
+                min-height: 85vh;
+                padding: 5rem 2rem 2rem;
             }
 
             .hero-content {
@@ -609,8 +609,8 @@
             }
 
             .continue-line {
-                top: 320px;
-                height: calc(100% - 320px);
+                top: 360px;
+                height: calc(100% - 360px);
             }
 
             .pillars-grid {
