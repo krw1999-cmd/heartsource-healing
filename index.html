@@ -551,6 +551,53 @@
             color: var(--warm-ivory);
         }
 
+        /* Newsletter Form */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 300px;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--warm-ivory);
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(247, 243, 238, 0.6);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--golden-ember);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--golden-ember);
+            color: var(--ink-charcoal);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            background-color: #E5C477;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(215, 179, 106, 0.4);
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             nav {
@@ -643,6 +690,10 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+
+            .newsletter-form {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -707,6 +758,7 @@
                     <a href="contact.html">Contact</a>
                     <a href="reading-list.html">Reading List</a>
                     <a href="media.html">Media</a>
+                    <a href="newsletter.html">Newsletter</a>
                 </div>
             </li>
         </ul>
@@ -795,8 +847,12 @@
     <footer class="footer">
         <div class="footer-content">
             <div>
-                <h3>Heart Source Healing</h3>
-                <p>A compassionate space for transformation and growth.</p>
+                <h3>Subscribe to Our Newsletter</h3>
+                <p style="margin-bottom: 1rem;">Stay connected with healing insights, upcoming events, and exclusive offerings.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="Enter your email" required class="newsletter-input">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
             </div>
             <div>
                 <h3>Quick Links</h3>
@@ -811,7 +867,7 @@
                 <h3>Connect</h3>
                 <ul>
                     <li><a href="#">Email Us</a></li>
-                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="newsletter.html">Newsletter</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
                 </ul>
             </div>
