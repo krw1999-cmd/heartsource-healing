@@ -295,6 +295,26 @@
             background-color: var(--golden-ember);
         }
 
+        .pillar-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .overview-link {
+            color: var(--lavender-core);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .overview-link:hover {
+            color: var(--golden-ember);
+        }
+
         .pillar-icon {
             color: var(--lavender-core);
             font-size: 2.5rem;
@@ -306,6 +326,30 @@
             margin-top: 1rem;
             margin-bottom: 1.5rem;
             line-height: 1.7;
+        }
+
+        .pillar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .pillar-sublink {
+            color: var(--lavender-core);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            padding-left: 0;
+            border-left: 2px solid transparent;
+            padding-left: 0.75rem;
+        }
+
+        .pillar-sublink:hover {
+            color: var(--golden-ember);
+            border-left-color: var(--golden-ember);
+            padding-left: 1rem;
         }
 
         .pillar-link {
@@ -783,27 +827,57 @@
         <div class="pillars-grid">
             <div class="pillar-card">
                 <div class="pillar-icon">◆</div>
-                <h3>Personal Instruction</h3>
+                <div class="pillar-header">
+                    <h3>Personal Instruction</h3>
+                    <a href="personal-instruction.html" class="overview-link">Overview →</a>
+                </div>
                 <p>One-on-one guidance tailored to your individual journey. Experience personalized support designed to meet you exactly where you are.</p>
-                <a href="personal-instruction.html" class="pillar-link">Learn More →</a>
+                <div class="pillar-links">
+                    <a href="individual-life-coaching.html" class="pillar-sublink">Individual Life Coaching</a>
+                    <a href="couples-life-coaching.html" class="pillar-sublink">Couples Life Coaching</a>
+                    <a href="pain-free-yoga.html" class="pillar-sublink">Private Pain-Free Yoga</a>
+                    <a href="health-coaching.html" class="pillar-sublink">One-on-One Health Coaching</a>
+                </div>
             </div>
             <div class="pillar-card">
                 <div class="pillar-icon">◆</div>
-                <h3>Upkeep</h3>
+                <div class="pillar-header">
+                    <h3>Upkeep</h3>
+                    <a href="upkeep.html" class="overview-link">Overview →</a>
+                </div>
                 <p>Maintain and nurture your healing progress with ongoing support and practices. Cultivate lasting wellness through consistent care.</p>
-                <a href="upkeep.html" class="pillar-link">Learn More →</a>
+                <div class="pillar-links">
+                    <a href="weekly-yoga-classes.html" class="pillar-sublink">Weekly Pain-Free Yoga Classes</a>
+                    <a href="mens-coaching.html" class="pillar-sublink">3 Month Men's Group Coaching</a>
+                    <a href="group-nutrition-coaching.html" class="pillar-sublink">3 Month Group Nutrition & Health Coaching</a>
+                    <a href="community-coaching.html" class="pillar-sublink">3 Month Community Coaching</a>
+                </div>
             </div>
             <div class="pillar-card">
                 <div class="pillar-icon">◆</div>
-                <h3>Education</h3>
+                <div class="pillar-header">
+                    <h3>Education</h3>
+                    <a href="education.html" class="overview-link">Overview →</a>
+                </div>
                 <p>Expand your knowledge and understanding through workshops, courses, and resources. Empower yourself with wisdom for lifelong growth.</p>
-                <a href="education.html" class="pillar-link">Learn More →</a>
+                <div class="pillar-links">
+                    <a href="health-counseling-training.html" class="pillar-sublink">Health Counseling Training Program</a>
+                    <a href="yoga-teacher-training.html" class="pillar-sublink">Pain-Free Yoga Teacher Training</a>
+                    <a href="somatic-trauma-training.html" class="pillar-sublink">Somatic Trauma Teacher Training</a>
+                    <a href="additional-training.html" class="pillar-sublink">Additional Training Programs</a>
+                </div>
             </div>
             <div class="pillar-card">
                 <div class="pillar-icon">◆</div>
-                <h3>Immersion</h3>
+                <div class="pillar-header">
+                    <h3>Immersion</h3>
+                    <a href="immersion.html" class="overview-link">Overview →</a>
+                </div>
                 <p>Dive deep into transformative experiences through retreats and intensive programs. Embrace profound healing in a supportive environment.</p>
-                <a href="immersion.html" class="pillar-link">Learn More →</a>
+                <div class="pillar-links">
+                    <a href="workshops.html" class="pillar-sublink">Workshops</a>
+                    <a href="retreats.html" class="pillar-sublink">Retreats</a>
+                </div>
             </div>
         </div>
     </section>
