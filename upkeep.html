@@ -7,12 +7,13 @@
     <style>
         :root {
             --lavender-core: #C38AE3;
-            --ink-charcoal: #2B2E38;
-            --dove-gray: #E8E6EA;
-            --rose-quartz: #F3DCE8;
-            --sage-mist: #C9D8D2;
+            --ink-charcoal: #262A32;
+            --charcoal-light: #3A3D46;
+            --warm-ivory: #F7F3EE;
+            --soft-sage-tint: #E8EEE9;
+            --lavender-mist: #EFE6F6;
+            --sandstone-veil: #F1E7DA;
             --golden-ember: #D7B36A;
-            --clear-sky: #9CC9FF;
         }
 
         * {
@@ -32,7 +33,7 @@
         nav {
             background-color: #ffffff;
             padding: 1.5rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            box-shadow: none;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -51,6 +52,21 @@
             opacity: 0.8;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--ink-charcoal);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -64,16 +80,17 @@
             text-decoration: none;
             color: var(--ink-charcoal);
             font-size: 1.1rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
-            position: relative;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
         }
 
         nav a:hover {
-            color: var(--lavender-core);
+            color: var(--golden-ember);
+            border-bottom: 2px solid var(--golden-ember);
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -93,7 +110,6 @@
             left: 0;
         }
 
-        /* Add invisible bridge to connect parent and dropdown */
         .dropdown::after {
             content: '';
             position: absolute;
@@ -115,6 +131,7 @@
             display: block;
             font-size: 1rem;
             transition: all 0.3s;
+            border-bottom: none;
         }
 
         .dropdown-content a:hover {
@@ -134,77 +151,106 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(201, 216, 210, 0.15) 0%, rgba(232, 230, 234, 0.3) 100%);
-            padding: 5rem 2rem 4rem;
-            text-align: center;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--lavender-core);
-            margin-bottom: 1rem;
+            background: linear-gradient(
+                to bottom,
+                #FFFFFF 0%,
+                #FEFEFE 20%,
+                #F9F5FB 35%,
+                #F3ECF8 48%,
+                #EDE3F5 60%,
+                #E7DAF2 72%,
+                #E1D1EF 82%,
+                #DBC8E8 90%,
+                #D5C0DD 100%
+            );
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8rem 2rem 5rem;
             position: relative;
-            display: inline-block;
         }
 
-        .hero h1::after {
-            content: '';
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 4rem;
+        }
+
+        .heart-aura {
             position: absolute;
-            bottom: -10px;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(195, 138, 227, 0.12) 0%, rgba(195, 138, 227, 0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(40px);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--ink-charcoal);
+            margin-bottom: 2rem;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--charcoal-light);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .continue-line {
+            position: absolute;
+            top: 320px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--golden-ember);
+            width: 2px;
+            height: calc(100% - 320px);
+            background: linear-gradient(to bottom, transparent 0%, var(--lavender-core) 20%, var(--golden-ember) 100%);
+            z-index: 3;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--ink-charcoal);
-            max-width: 800px;
-            margin: 2rem auto 0;
-            line-height: 1.8;
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
         }
 
-        /* Overview Section */
-        .overview {
-            padding: 4rem 2rem;
-            background-color: rgba(232, 230, 234, 0.2);
-            width: 100%;
+        /* Services Grid Section */
+        .services-section {
+            background: linear-gradient(to bottom, #D5C0DD 0%, #D8C5D5 35%, #DBCACD 70%, #DECFC5 100%);
+            padding: 5rem 2rem;
         }
 
-        .overview-content {
-            max-width: 900px;
-            margin: 0 auto;
+        .services-intro {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .overview h2 {
-            font-size: 2.2rem;
+        .services-intro h2 {
+            font-size: 2.5rem;
             color: var(--ink-charcoal);
-            margin-bottom: 1.5rem;
-        }
-
-        .overview p {
-            font-size: 1.2rem;
-            color: var(--ink-charcoal);
-            line-height: 1.8;
             margin-bottom: 1rem;
         }
 
-        /* Services Grid */
-        .services {
-            padding: 4rem 2rem;
-            background-color: #fff;
-            width: 100%;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--lavender-core);
-            margin-bottom: 3rem;
+        .services-intro p {
+            font-size: 1.2rem;
+            color: var(--charcoal-light);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .services-grid {
@@ -216,361 +262,323 @@
         }
 
         .service-card {
-            background: rgba(232, 230, 234, 0.3);
+            background-color: #ffffff;
             padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255,255,255,0.03) 10px,
-                    rgba(255,255,255,0.03) 20px
-                );
-            pointer-events: none;
-            border-radius: 12px;
-        }
-
-        .service-card:nth-child(1) {
-            background: rgba(201, 216, 210, 0.12);
-        }
-
-        .service-card:nth-child(2) {
-            background: rgba(195, 138, 227, 0.08);
-        }
-
-        .service-card:nth-child(3) {
-            background: rgba(243, 220, 232, 0.12);
-        }
-
-        .service-card:nth-child(4) {
-            background: rgba(156, 201, 255, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
 
-        .service-card:nth-child(1):hover {
-            background: rgba(201, 216, 210, 0.2);
-        }
-
-        .service-card:nth-child(2):hover {
-            background: rgba(195, 138, 227, 0.15);
-        }
-
-        .service-card:nth-child(3):hover {
-            background: rgba(243, 220, 232, 0.2);
-        }
-
-        .service-card:nth-child(4):hover {
-            background: rgba(156, 201, 255, 0.15);
+        .service-icon {
+            color: var(--lavender-core);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
             font-size: 1.8rem;
-            color: var(--lavender-core);
+            color: var(--ink-charcoal);
             margin-bottom: 1rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
         .service-card h3::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
-            width: 0;
-            height: 3px;
+            width: 100%;
+            height: 2px;
             background-color: var(--golden-ember);
-            transition: width 0.4s ease;
-        }
-
-        .service-card:hover h3::after {
-            width: 60px;
         }
 
         .service-card p {
-            font-size: 1.05rem;
-            color: var(--ink-charcoal);
-            margin-bottom: 1.5rem;
+            color: var(--charcoal-light);
             line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
-        .btn {
+        .service-link {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--lavender-core);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: var(--golden-ember);
-            transition: all 0.3s;
-            transform: translateX(-50%);
-        }
-
-        .btn:hover {
-            background-color: var(--ink-charcoal);
-            transform: translateY(-2px);
-        }
-
-        .btn:hover::after {
-            width: 80%;
-        }
-
-        /* Cross-Navigation Section */
-        .cross-nav {
-            background-color: #ffffff;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-top: 4px solid var(--golden-ember);
-            width: 100%;
-        }
-
-        .cross-nav h2 {
-            font-size: 2.5rem;
             color: var(--lavender-core);
-            margin-bottom: 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .cross-nav-subtitle {
-            font-size: 1.2rem;
-            color: var(--ink-charcoal);
-            margin-bottom: 3rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+        .service-link:hover {
+            color: var(--golden-ember);
         }
 
-        .cross-nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        /* CTA Section - Four Pillars */
+        .cta-section {
+            background: linear-gradient(to bottom, #DECFC5 0%, #E1D4BD 50%, #E4D9B5 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .pillars-cta-wrapper {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .cross-nav-item {
-            text-decoration: none;
+        .pillars-cta-wrapper h2 {
+            font-size: 2.8rem;
+            color: var(--lavender-core);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .pillars-subtitle {
+            font-size: 1.1rem;
+            color: var(--charcoal-light);
+            margin-bottom: 4rem;
+            line-height: 1.8;
+        }
+
+        .pillars-cta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar-cta-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.3s ease;
         }
 
-        .cross-nav-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .cross-nav-item h3 {
+        .pillar-cta-card h3 {
             font-size: 1.8rem;
             color: var(--lavender-core);
             margin-bottom: 1.5rem;
+            font-weight: 400;
         }
 
-        .cross-nav-image {
+        .pillar-cta-image {
             width: 100%;
-            max-width: 350px;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 16px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .cross-nav-item:hover .cross-nav-image {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-        }
-
-        .cross-nav-btn {
+        .pillar-cta-button {
             display: inline-block;
-            padding: 0.8rem 2.5rem;
             background-color: var(--lavender-core);
-            color: #fff;
+            color: #ffffff;
+            padding: 0.9rem 2.5rem;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: all 0.3s;
             font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(195, 138, 227, 0.3);
         }
 
-        .cross-nav-btn:hover {
+        .pillar-cta-button:hover {
+            background-color: #B176D8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(195, 138, 227, 0.4);
+        }
+
+        /* Footer */
+        .footer {
             background-color: var(--ink-charcoal);
-            transform: scale(1.05);
+            padding: 4rem 2rem 2rem;
+            color: var(--warm-ivory);
         }
 
-        /* Email Signup Footer */
-        .email-footer {
-            background: linear-gradient(135deg, var(--lavender-core) 0%, var(--rose-quartz) 50%, var(--sage-mist) 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .email-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .email-footer-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
+        .footer-content {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .email-footer h2 {
-            color: #fff;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
-            line-height: 1.4;
+        .footer h3 {
+            color: var(--warm-ivory);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--golden-ember);
+            display: inline-block;
+            padding-bottom: 0.5rem;
         }
 
-        .email-form {
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer a {
+            color: var(--warm-ivory);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--lavender-core);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--golden-ember);
+            color: var(--warm-ivory);
+        }
+
+        /* Newsletter Form */
+        .newsletter-form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 0.75rem;
+            max-width: 300px;
         }
 
-        .email-input {
-            padding: 1rem;
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--warm-ivory);
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
             font-size: 1rem;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.95);
-            color: var(--ink-charcoal);
-            transition: border-color 0.3s;
         }
 
-        .email-input:focus {
+        .newsletter-input::placeholder {
+            color: rgba(247, 243, 238, 0.6);
+        }
+
+        .newsletter-input:focus {
             outline: none;
-            border-color: var(--clear-sky);
+            border-color: var(--golden-ember);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
-        .email-input::placeholder {
-            color: #999;
-        }
-
-        .subscribe-btn {
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 5px;
+        .newsletter-button {
+            padding: 0.75rem 1.5rem;
             background-color: var(--golden-ember);
-            color: #fff;
-            font-weight: bold;
+            color: var(--ink-charcoal);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
-        .subscribe-btn:hover {
-            background-color: var(--lavender-core);
+        .newsletter-button:hover {
+            background-color: #E5C477;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(215, 179, 106, 0.4);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 1rem;
             }
 
-            .logo {
-                height: 40px;
+            .hamburger {
+                display: flex;
             }
 
             nav ul {
-                gap: 1rem;
+                position: fixed;
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                align-items: center;
+                background-color: #ffffff;
+                width: 80%;
+                max-width: 300px;
+                text-align: left;
+                transition: 0.3s;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                padding: 2rem 0;
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+                gap: 0;
             }
 
-            .dropdown {
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
                 width: 100%;
-                text-align: center;
             }
 
-            .dropdown-content {
-                position: static;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                margin-top: 0.5rem;
-                width: 100%;
-                display: none;
-            }
-
-            .dropdown.active .dropdown-content {
+            nav ul li a {
                 display: block;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #f0f0f0;
             }
 
-            .dropdown > a::after {
-                content: ' ▾';
+            .pillars-cta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 85vh;
+                padding: 5rem 2rem 2rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .hero-content {
+                margin-bottom: 3rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .heart-aura {
+                width: 300px;
+                height: 300px;
+                top: 25%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .continue-line {
+                top: 360px;
+                height: calc(100% - 360px);
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cross-nav-grid {
+            .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .cross-nav h2 {
-                font-size: 2rem;
+            .newsletter-form {
+                max-width: 100%;
             }
 
-            .email-footer h2 {
-                font-size: 1.5rem;
+            .pillars-cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-cta-wrapper h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -581,7 +589,12 @@
         <a href="index.html">
             <img src="images/Logo.png" alt="Heart Source Logo" class="logo">
         </a>
-        <ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li class="dropdown">
@@ -599,7 +612,7 @@
                 <div class="dropdown-content">
                     <a href="upkeep.html">Overview</a>
                     <a href="weekly-yoga-classes.html">Weekly Pain-Free Yoga Classes</a>
-                    <a href="mens-coaching.html">3 Month Men's Coaching</a>
+                    <a href="mens-coaching.html">3 Month Men's Group Coaching</a>
                     <a href="group-nutrition-coaching.html">3 Month Group Nutrition & Health Coaching</a>
                     <a href="community-coaching.html">3 Month Community Coaching</a>
                 </div>
@@ -622,129 +635,163 @@
                     <a href="retreats.html">Retreats</a>
                 </div>
             </li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li class="dropdown">
+                <a href="resources.html">Resources</a>
+                <div class="dropdown-content">
+                    <a href="resources.html">Overview</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="reading-list.html">Reading List</a>
+                    <a href="media.html">Media</a>
+                    <a href="newsletter.html">Newsletter</a>
+                </div>
+            </li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Upkeep</h1>
-        <p>Sustain your healing journey with ongoing support and community connection.</p>
-    </section>
-
-    <!-- Overview Section -->
-    <section class="overview">
-        <div class="overview-content">
-            <h2>Nurture Your Growth</h2>
-            <p>Upkeep is about consistency and community—the essential ingredients for lasting transformation. After beginning your healing journey, maintaining progress requires continued practice, support, and connection with others on similar paths.</p>
-            <p>Our upkeep programs offer structured, ongoing engagement through weekly classes and multi-month coaching experiences. Here, you'll find the accountability, encouragement, and gentle guidance needed to integrate new habits and sustain positive change over time.</p>
+        <div class="heart-aura"></div>
+        <div class="hero-content">
+            <h1>Upkeep</h1>
+            <p>Sustaining your healing through consistent care and community support.</p>
         </div>
+        <div class="continue-line"></div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <h2>Choose Your Path</h2>
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="services-intro">
+            <h2>Ongoing Support for Lasting Transformation</h2>
+            <p>Healing isn't a destination—it's a journey. These programs offer the consistent support and community connection you need to maintain and deepen your progress.</p>
+        </div>
         <div class="services-grid">
-            <!-- Weekly Pain-Free Yoga Classes -->
             <div class="service-card">
-                <img src="https://via.placeholder.com/400x250/C9D8D2/2B2E38?text=Weekly+Yoga" alt="Weekly Yoga Classes" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <div class="service-icon">◆</div>
                 <h3>Weekly Pain-Free Yoga Classes</h3>
-                <p>Join our welcoming community for gentle, adaptive yoga classes that honor your body's needs. Designed to relieve pain and build strength gradually, these weekly sessions provide consistent support for your physical wellness journey in a warm, judgment-free environment.</p>
-                <a href="weekly-yoga-classes.html" class="btn">Learn More</a>
+                <p>Join our gentle, trauma-informed yoga community for weekly classes designed to reduce pain, increase mobility, and cultivate body awareness. A safe space to move at your own pace and connect with others on the healing path.</p>
+                <a href="weekly-yoga-classes.html" class="service-link">Learn More →</a>
             </div>
-
-            <!-- 3 Month Men's Coaching -->
             <div class="service-card">
-                <img src="https://via.placeholder.com/400x250/C38AE3/ffffff?text=Mens+Coaching" alt="Men's Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                <h3>3 Month Men's Coaching</h3>
-                <p>A powerful group experience designed specifically for men seeking authentic connection and personal growth. Over three months, explore masculinity, vulnerability, and purpose in a supportive brotherhood that encourages honest conversation and meaningful transformation.</p>
-                <a href="mens-coaching.html" class="btn">Learn More</a>
+                <div class="service-icon">◆</div>
+                <h3>3 Month Men's Group Coaching</h3>
+                <p>A supportive brotherhood for men committed to personal growth and authentic connection. Together, we'll explore vulnerability, strength, purpose, and what it means to live from the heart in today's world.</p>
+                <a href="mens-coaching.html" class="service-link">Learn More →</a>
             </div>
-
-            <!-- 3 Month Group Nutrition & Health Coaching -->
             <div class="service-card">
-                <img src="https://via.placeholder.com/400x250/F3DCE8/2B2E38?text=Nutrition+Coaching" alt="Nutrition Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <div class="service-icon">◆</div>
                 <h3>3 Month Group Nutrition & Health Coaching</h3>
-                <p>Transform your relationship with food and wellness alongside a supportive community. This comprehensive program combines nutrition education, lifestyle coaching, and group accountability to help you build sustainable healthy habits that last far beyond the three months.</p>
-                <a href="group-nutrition-coaching.html" class="btn">Learn More</a>
+                <p>Transform your relationship with food and wellness in a supportive group setting. Learn sustainable practices for nourishing your body, balancing your energy, and creating lasting health from the inside out.</p>
+                <a href="group-nutrition-coaching.html" class="service-link">Learn More →</a>
             </div>
-
-            <!-- 3 Month Community Coaching -->
             <div class="service-card">
-                <img src="https://via.placeholder.com/400x250/9CC9FF/2B2E38?text=Community+Coaching" alt="Community Coaching" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                <div class="service-icon">◆</div>
                 <h3>3 Month Community Coaching</h3>
-                <p>Experience the power of collective healing in this inclusive group coaching program. Share your journey, learn from others, and receive guided support as you work toward your personal goals within a compassionate, diverse community committed to growth and mutual encouragement.</p>
-                <a href="community-coaching.html" class="btn">Learn More</a>
+                <p>Experience the power of healing in community. This intimate group program offers ongoing support, shared wisdom, and deep connection as we navigate life's challenges and celebrate its joys together.</p>
+                <a href="community-coaching.html" class="service-link">Learn More →</a>
             </div>
         </div>
     </section>
 
-    <!-- Cross-Navigation to Other Pillars -->
-    <section class="cross-nav">
-        <h2>Heart Source Offers 4 Pillars of Healing</h2>
-        <p class="cross-nav-subtitle">Our inclusive approach and gentle environment can accommodate everyone who wishes to participate.</p>
-        
-        <div class="cross-nav-grid">
-            <!-- Personal Instruction -->
-            <a href="personal-instruction.html" class="cross-nav-item">
-                <h3>Personal Instruction</h3>
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop" alt="Personal Instruction" class="cross-nav-image">
-                <span class="cross-nav-btn">Learn More</span>
-            </a>
+    <!-- Divider -->
+    <div style="background: linear-gradient(to bottom, #DECFC5 0%, #E1D4BD 100%); padding: 0;">
+        <div style="height: 3px; background-color: var(--golden-ember); width: 100%;"></div>
+    </div>
 
-            <!-- Upkeep -->
-            <a href="upkeep.html" class="cross-nav-item">
-                <h3>Upkeep</h3>
-                <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop" alt="Upkeep" class="cross-nav-image">
-                <span class="cross-nav-btn">Learn More</span>
-            </a>
-
-            <!-- Education -->
-            <a href="education.html" class="cross-nav-item">
-                <h3>Education</h3>
-                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop" alt="Education" class="cross-nav-image">
-                <span class="cross-nav-btn">Learn More</span>
-            </a>
-
-            <!-- Immersion -->
-            <a href="immersion.html" class="cross-nav-item">
-                <h3>Immersion</h3>
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=300&fit=crop" alt="Immersion" class="cross-nav-image">
-                <span class="cross-nav-btn">Learn More</span>
-            </a>
+    <!-- Four Pillars Section -->
+    <section class="cta-section">
+        <div class="pillars-cta-wrapper">
+            <h2>Heart Source Offers 4 Pillars of Healing</h2>
+            <p class="pillars-subtitle">Our inclusive approach and gentle environment can accommodate everyone who wishes to participate.</p>
+            
+            <div class="pillars-cta-grid">
+                <div class="pillar-cta-card">
+                    <h3>Personal Instruction</h3>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop" alt="Personal Instruction" class="pillar-cta-image">
+                    <a href="personal-instruction.html" class="pillar-cta-button">Learn More</a>
+                </div>
+                
+                <div class="pillar-cta-card">
+                    <h3>Upkeep</h3>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop" alt="Upkeep" class="pillar-cta-image">
+                    <a href="upkeep.html" class="pillar-cta-button">Learn More</a>
+                </div>
+                
+                <div class="pillar-cta-card">
+                    <h3>Education</h3>
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=600&fit=crop" alt="Education" class="pillar-cta-image">
+                    <a href="education.html" class="pillar-cta-button">Learn More</a>
+                </div>
+                
+                <div class="pillar-cta-card">
+                    <h3>Immersion</h3>
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=600&fit=crop&sat=-100" alt="Immersion" class="pillar-cta-image">
+                    <a href="immersion.html" class="pillar-cta-button">Learn More</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Email Signup Footer -->
-    <footer class="email-footer">
-        <div class="email-footer-content">
-            <h2>Join our email list to receive updates & upcoming workshop announcements.</h2>
-            <div class="email-form">
-                <input type="email" class="email-input" placeholder="Email Address" required>
-                <button type="submit" class="subscribe-btn">Subscribe!</button>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Subscribe to Our Newsletter</h3>
+                <p style="margin-bottom: 1rem;">Stay connected with healing insights, upcoming events, and exclusive offerings.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="Enter your email" required class="newsletter-input">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
             </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="newsletter.html">Newsletter</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Heart Source Healing. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
             });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 1200) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnHamburger = hamburger.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            }
         });
 
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
+        // Dropdown toggle for mobile
+        if (window.innerWidth <= 1200) {
             document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
                 dropdownLink.addEventListener('click', function(e) {
                     e.preventDefault();
