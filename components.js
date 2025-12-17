@@ -63,6 +63,48 @@ const navigationHTML = `
 </nav>
 `;
 
+// Four Pillars CTA Section HTML
+const fourPillarsHTML = `
+<!-- Divider -->
+<div style="background: linear-gradient(to bottom, #DECFC5 0%, #E1D4BD 100%); padding: 0;">
+    <div style="height: 3px; background-color: var(--golden-ember); width: 100%;"></div>
+</div>
+
+<!-- Four Pillars Section -->
+<section class="cta-section">
+    <div class="pillars-cta-wrapper">
+        <h2>Heart Source Offers 4 Pillars of Healing</h2>
+        <p class="pillars-subtitle">Our inclusive approach and gentle environment can accommodate everyone who wishes to participate.</p>
+        
+        <div class="pillars-cta-grid">
+            <div class="pillar-cta-card">
+                <h3>Personal Instruction</h3>
+                <img src="images/coaching.jpeg" alt="Personal Instruction" class="pillar-cta-image">
+                <a href="personal-instruction.html" class="pillar-cta-button">Learn More</a>
+            </div>
+            
+            <div class="pillar-cta-card">
+                <h3>Upkeep</h3>
+                <img src="images/upkeep.jpeg" alt="Upkeep" class="pillar-cta-image">
+                <a href="upkeep.html" class="pillar-cta-button">Learn More</a>
+            </div>
+            
+            <div class="pillar-cta-card">
+                <h3>Education</h3>
+                <img src="images/education.jpeg" alt="Education" class="pillar-cta-image">
+                <a href="education.html" class="pillar-cta-button">Learn More</a>
+            </div>
+            
+            <div class="pillar-cta-card">
+                <h3>Immersion</h3>
+                <img src="images/immersion.jpeg" alt="Immersion" class="pillar-cta-image">
+                <a href="immersion.html" class="pillar-cta-button">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+`;
+
 // Footer HTML
 const footerHTML = `
 <footer class="footer">
@@ -141,6 +183,14 @@ function loadNavigation() {
     }
 }
 
+// Function to load Four Pillars section
+function loadFourPillars() {
+    const pillarsPlaceholder = document.getElementById('pillars-placeholder');
+    if (pillarsPlaceholder) {
+        pillarsPlaceholder.innerHTML = fourPillarsHTML;
+    }
+}
+
 // Function to load footer
 function loadFooter() {
     const footerPlaceholder = document.getElementById('footer-placeholder');
@@ -152,5 +202,6 @@ function loadFooter() {
 // Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     loadNavigation();
+    loadFourPillars();
     loadFooter();
 });
